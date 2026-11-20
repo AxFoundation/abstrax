@@ -1,0 +1,34 @@
+# abstrax canonical detector configuration
+#
+# This file is the SINGLE SOURCE OF TRUTH for detector parameters used by the
+# abstrax processing chain. Resolved at runtime via the `detector://` URLConfig
+# protocol, e.g. `detector://n_tpc_pmts`.
+#
+# Values below are XENONnT-like defaults (geometry and channel count), chosen so that
+# simulations with ember and fuse can be compared.
+#
+# Units: cm, ns (as in ember and fuse). ember's detector.yaml contains all keys of this
+# file with the same values (checked by an ember test); when ember is imported, detector://
+# reads ember's file. Change a value in both files. Adjust for your actual study and bump plugin __version__
+# fields when changes alter reconstructed outputs.
+
+# --- PMT properties --------------------------------------------------------------
+n_tpc_pmts: 494                # total channels in the main TPC
+n_top_pmts: 253                # top array
+n_bottom_pmts: 241             # bottom array
+
+# Channel index ranges. Plugins should NEVER assume contiguous indexing or a
+# specific split point — read these.
+top_pmt_indices: [0, 253]       # half-open [start, stop)
+bottom_pmt_indices: [253, 494]
+
+pmt_to_pe: 0.005                # PE per ADC count and sample (flat fake gain model of abstrax_context)
+
+# --- TPC and LXe properties ------------------------------------------------------------
+tpc_length: 148.6515             # cm, cathode-to-gate drift length (gate at z = 0, cathode at z = -tpc_length)
+tpc_radius: 66.4                 # cm, radius of the sensitive volume
+drift_velocity_liquid: 1.3368e-4  # cm/ns (1.34 mm/us), NEST drift velocity at 100 V/cm, 177.15 K
+electron_lifetime_liquid: 2.0e+07  # ns (20 ms)
+w_value_ev: 13.7                  # average energy per quanta
+g1: 0.151                         # S1 gain [PE / photon produced]
+g2: 30.0                          # S2 gain [PE / electron produced]

@@ -1,0 +1,23 @@
+{
+    "comments": [
+        {
+            "comment": "Short simulated dummy run, with raw_records"
+        }
+    ],
+    "end": {
+        "$date": "1970-01-01T00:00:05Z"
+    },
+    "mode": "dummy_sim",
+    "name": "012882",
+    "start": {
+        "$date": "1970-01-01T00:00:00Z"
+    },
+    "tags": [
+        {
+            "name": "simulation"
+        },
+        {
+            "name": "short_run"
+        }
+    ]
+}

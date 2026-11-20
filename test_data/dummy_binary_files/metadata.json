@@ -1,0 +1,87 @@
+{
+  "board": {
+    "adc_bits": 14,
+    "amc_firmware": "00.05 - Build 9130",
+    "board_info_0x8140": "0x10080b",
+    "channels": 16,
+    "dpp_firmware": "standard waveform",
+    "family_code": 11,
+    "form_factor": 0,
+    "model": "V1730SB",
+    "model_code": 32,
+    "roc_firmware": "04.29 - Build 8716",
+    "serial": 30176
+  },
+  "buffer": {
+    "k": 10,
+    "n_buffers_override": false,
+    "nb": 1024,
+    "note": "Each channel SRAM is sliced into Nb=2^k equal buffers, k=0..10. Custom record length shortens the stored event; it does not create more buffers.",
+    "samples_per_buffer": 5110
+  },
+  "channel_mask": "0x3",
+  "channels": [
+    {
+      "baseline_mean": 13859.669302208835,
+      "baseline_rms": 140.26160995921555,
+      "baseline_within_tolerance": false,
+      "dac": 10234,
+      "dynamic_range": "0.5Vpp",
+      "enabled": true,
+      "index": 0,
+      "polarity": "negative",
+      "target_percent": 85.0,
+      "threshold_adc": null,
+      "threshold_counts": 10
+    },
+    {
+      "baseline_mean": 2457.7089608433735,
+      "baseline_rms": 3.4639219166002913,
+      "baseline_within_tolerance": true,
+      "dac": 54071,
+      "dynamic_range": "0.5Vpp",
+      "enabled": true,
+      "index": 1,
+      "polarity": "negative",
+      "target_percent": 15.0,
+      "threshold_adc": null,
+      "threshold_counts": 100
+    }
+  ],
+  "dynamic_range": "0.5Vpp",
+  "enabled_channels": [
+    0,
+    1
+  ],
+  "ended_utc": "2026-11-02T13:21:08Z",
+  "event_counter_note": "event_counter is the digitizer header counter. Baseline software triggers can advance it before the run.",
+  "events_written": 3953,
+  "files": [
+    "wf_00000.bin"
+  ],
+  "link": {
+    "conet_node": 0,
+    "link_num": 0,
+    "link_type": "optical",
+    "open_base": "0x0",
+    "use_vme_base_address": false,
+    "vme_base_address": "0x32140000"
+  },
+  "post_trigger_percent_readback": 50,
+  "post_trigger_percent_set": 50,
+  "post_trigger_samples_actual": 500,
+  "pre_trigger_samples_actual": 500,
+  "pre_trigger_samples_requested": 500,
+  "record_length": 1000,
+  "record_length_requested": 1000,
+  "sample_period_ns": 2,
+  "started_utc": "2026-11-02T13:21:08Z",
+  "stop_reason": "error",
+  "trigger": {
+    "io_level": "TTL",
+    "register_0x810C_readback": "0x40000000",
+    "type": "external"
+  },
+  "trigger_time_tag_tick_ns": 8,
+  "waveforms_per_file": 50000
+}

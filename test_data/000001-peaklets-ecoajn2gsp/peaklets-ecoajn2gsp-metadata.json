@@ -1,0 +1,333 @@
+{
+    "chunk_target_size_mb": 2000,
+    "chunks": [
+        {
+            "chunk_i": 0,
+            "end": 200080000000,
+            "filename": "peaklets-ecoajn2gsp-000000",
+            "filesize": 45519323,
+            "first_endtime": 500,
+            "first_time": 40,
+            "last_endtime": 199980948940,
+            "last_time": 199980939940,
+            "n": 20912,
+            "nbytes": 105082800,
+            "run_id": "000001",
+            "start": 0,
+            "subruns": null
+        }
+    ],
+    "compressor": "zstd",
+    "data_kind": "peaklets",
+    "data_type": "peaklets",
+    "dtype": "[(('Start time since unix epoch [ns]', 'time'), '<i8'), (('Length of the interval in samples', 'length'), '<i4'), (('Width of one sample [ns]', 'dt'), '<i4'), (('Channel/PMT number', 'channel'), '<i2'), (('Classification of the peak(let)', 'type'), '|i1'), (('Integral across channels [PE]', 'area'), '<f4'), (('Fraction of area seen by the top array', 'area_fraction_top'), '<f4'), (('Integral per channel [PE]', 'area_per_channel'), '<f4', (494,)), (('Number of hits contributing at least one sample to the peak ', 'n_hits'), '<i4'), (('Waveform data in PE/sample (not PE/ns!), top array', 'data_top'), '<f4', (200,)), (('Waveform data in PE/sample (not PE/ns!), starting not downsampled samples', 'data_start'), '<f4', (200,)), (('Waveform data in PE/sample (not PE/ns!)', 'data'), '<f4', (200,)), (('Weighted average center time of the peak [ns]', 'center_time'), '<i8'), (('Weighted relative median time of the peak [ns]', 'median_time'), '<f4'), (('Peak widths in range of central area fraction [ns]', 'width'), '<f4', (11,)), (('Peak widths: time between nth and 5th area decile [ns]', 'area_decile_from_midpoint'), '<f4', (11,)), (('Does the channel reach ADC saturation?', 'saturated_channel'), '|i1', (494,)), (('Total number of saturated channels', 'n_saturated_channels'), '<i2'), (('Channel within tight range of mean', 'tight_coincidence'), '<i2'), (('Largest gap between hits inside peak [ns]', 'max_gap'), '<i4'), (('Maximum interior goodness of split', 'max_goodness_of_split'), '<f4'), (('Largest time difference between apexes of hits inside peak [ns]', 'max_diff'), '<i4'), (('Smallest time difference between apexes of hits inside peak [ns]', 'min_diff'), '<i4'), (('First channel/PMT number inside peak (sorted by apexes of hits)', 'first_channel'), '<i2'), (('Last channel/PMT number inside peak (sorted by apexes of hits)', 'last_channel'), '<i2')]",
+    "end": 200080000000,
+    "lineage": {
+        "clustered_interactions": [
+            "CsvInput",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "first_chunk_left": 1000000.0,
+                "fixed_event_spacing": true,
+                "last_chunk_length": 100000000.0,
+                "n_interactions_per_chunk": 500,
+                "separation_scale": 100000000.0,
+                "source_rate": 50,
+                "user_defined_random_seed": null,
+                "w_value": "detector://w_value_ev"
+            }
+        ],
+        "drifted_electrons": [
+            "ElectronDrift",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "diffusion_constant_longitudinal_gate": "detector://diffusion_constant_longitudinal_gate",
+                "drift_time_gate": "detector://drift_time_gate",
+                "electron_lifetime_liquid": "detector://electron_lifetime_liquid",
+                "field_dependencies_map": "ember_map://field_dependencies_dummy.json?method=linear",
+                "survival_probability_map": "ember_map://electron_survival_below_cathode.json?method=nearest",
+                "user_defined_random_seed": null,
+                "z_gate": "detector://z_gate",
+                "z_liquid_level": "detector://z_liquid_level"
+            }
+        ],
+        "electric_field_values": [
+            "ElectricField",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "efield_map": "ember_map://drift_field_constant.json?method=linear",
+                "user_defined_random_seed": null
+            }
+        ],
+        "electrons_at_interface": [
+            "ElectronPropagation",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "field_dependencies_map": "ember_map://field_dependencies_dummy.json?method=linear",
+                "user_defined_random_seed": null
+            }
+        ],
+        "extracted_electrons": [
+            "ElectronExtraction",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "electron_extraction_yield": "detector://electron_extraction_efficiency",
+                "electron_trapping_time": "detector://electron_trapping_time",
+                "user_defined_random_seed": null
+            }
+        ],
+        "interactions_in_roi": [
+            "DefaultSimulation",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "user_defined_random_seed": null
+            }
+        ],
+        "lone_hits": [
+            "Peaklets",
+            "0.0.2",
+            {
+                "gain_model": "ember_pmt_to_pe://",
+                "hit_min_amplitude": 15,
+                "n_top_pmts": "detector://n_top_pmts",
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "peak_left_extension": 30,
+                "peak_min_pmts": 2,
+                "peak_right_extension": 200,
+                "peak_split_filter_wing_width": 70,
+                "peak_split_gof_threshold": [
+                    null,
+                    [
+                        [
+                            0.5,
+                            1.0
+                        ],
+                        [
+                            6.0,
+                            0.4
+                        ]
+                    ],
+                    [
+                        [
+                            2.5,
+                            1.0
+                        ],
+                        [
+                            5.625,
+                            0.4
+                        ]
+                    ]
+                ],
+                "peak_split_iterations": 20,
+                "peak_split_min_area": 40.0,
+                "peaklet_gap_threshold": 700,
+                "peaklet_max_duration": 10000000,
+                "saturation_correction_on": true,
+                "saturation_min_reference_length": 20,
+                "saturation_reference_length": 100,
+                "store_data_start": true,
+                "store_data_top": true,
+                "tight_coincidence_window_left": 50,
+                "tight_coincidence_window_right": 50
+            }
+        ],
+        "microphysics_summary": [
+            "MicroPhysicsSummary",
+            "0.0.1",
+            {}
+        ],
+        "photon_summary": [
+            "PhotonSummary",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "user_defined_random_seed": null
+            }
+        ],
+        "pmt_afterpulses": [
+            "PMTAfterPulses",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "digitizer_bits": "detector://digitizer_bits",
+                "digitizer_voltage_range": "detector://digitizer_voltage_range",
+                "enable_pmt_afterpulses": "detector://enable_pmt_afterpulses",
+                "gain_model_mc": "ember_pmt_to_pe://",
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "photon_ap_cdfs": "ember_file://pmt_afterpulse_config_dummy.json.gz",
+                "pmt_ap_modifier": "detector://pmt_ap_modifier",
+                "pmt_ap_t_modifier": "detector://pmt_ap_t_modifier",
+                "pmt_circuit_load_resistor": "detector://pmt_circuit_load_resistor",
+                "user_defined_random_seed": null
+            }
+        ],
+        "propagated_s1_photons": [
+            "S1PhotonPropagation",
+            "0.0.2",
+            {
+                "S1PhotonPropagationBase": "0.0.1",
+                "deterministic_seed": true,
+                "digitizer_bits": "detector://digitizer_bits",
+                "digitizer_voltage_range": "detector://digitizer_voltage_range",
+                "gain_model_mc": "ember_pmt_to_pe://",
+                "maximum_recombination_time": 1000,
+                "n_top_pmts": "detector://n_top_pmts",
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "p_double_pe_emission": "detector://p_double_pe_emission",
+                "photon_area_distribution": "ember_table://spe_distributions_dummy.csv",
+                "pmt_circuit_load_resistor": "detector://pmt_circuit_load_resistor",
+                "pmt_transit_time_mean": "detector://pmt_transit_time_mean",
+                "pmt_transit_time_spread": "detector://pmt_transit_time_spread",
+                "s1_optical_propagation_spline": "ember_map://s1_optical_propagation_dummy.json?method=linear",
+                "s1_pattern_map": "ember_map://s1_pattern_map_dummy.pkl?method=linear",
+                "user_defined_random_seed": null
+            }
+        ],
+        "propagated_s2_photons": [
+            "S2PhotonPropagation",
+            "0.0.2",
+            {
+                "S2PhotonPropagationBase": "0.0.2",
+                "deterministic_seed": true,
+                "digitizer_bits": "detector://digitizer_bits",
+                "digitizer_voltage_range": "detector://digitizer_voltage_range",
+                "gain_model_mc": "ember_pmt_to_pe://",
+                "n_top_pmts": "detector://n_top_pmts",
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "p_double_pe_emission": "detector://p_double_pe_emission",
+                "photon_area_distribution": "ember_table://spe_distributions_dummy.csv",
+                "pmt_circuit_load_resistor": "detector://pmt_circuit_load_resistor",
+                "pmt_transit_time_mean": "detector://pmt_transit_time_mean",
+                "pmt_transit_time_spread": "detector://pmt_transit_time_spread",
+                "s2_luminescence_timing_map": "ember_map://s2_luminescence_timing_dummy.json?method=linear",
+                "s2_optical_propagation_spline": "ember_map://s2_optical_propagation_dummy.json?method=linear",
+                "s2_pattern_map": "ember_map://s2_pattern_map_dummy.pkl?method=linear",
+                "singlet_fraction_gas": "detector://singlet_fraction_gas",
+                "singlet_lifetime_gas": "detector://singlet_lifetime_gas",
+                "triplet_lifetime_gas": "detector://triplet_lifetime_gas",
+                "user_defined_random_seed": null
+            }
+        ],
+        "pulse_counts": [
+            "PulseProcessing",
+            "0.1.0",
+            {
+                "baseline_samples": 40,
+                "hit_min_amplitude": 15,
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "save_outside_hits": [
+                    3,
+                    20
+                ]
+            }
+        ],
+        "pulse_ids": [
+            "PulseWindow",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "dt": "detector://sample_duration",
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "samples_after_pulse_center": "detector://samples_after_pulse_center",
+                "samples_before_pulse_center": "detector://samples_before_pulse_center",
+                "samples_to_store_after": "detector://samples_to_store_after",
+                "samples_to_store_before": "detector://samples_to_store_before",
+                "user_defined_random_seed": null
+            }
+        ],
+        "quanta": [
+            "NestYields",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "fix_gamma_yield_field": -1.0,
+                "nest_er_yields_parameters": -1,
+                "nest_nr_yields_parameters": -1,
+                "nest_width_parameters": {},
+                "return_yields_only": false,
+                "user_defined_random_seed": null
+            }
+        ],
+        "raw_records": [
+            "PMTResponseAndDAQ",
+            "0.0.3",
+            {
+                "deterministic_seed": true,
+                "digitizer_bits": "detector://digitizer_bits",
+                "digitizer_reference_baseline": "detector://digitizer_reference_baseline",
+                "digitizer_voltage_range": "detector://digitizer_voltage_range",
+                "dt": "detector://sample_duration",
+                "enable_noise": "detector://enable_noise",
+                "external_amplification": "detector://external_amplification",
+                "n_tpc_pmts": "detector://n_tpc_pmts",
+                "noise_data": "ember_file://noise_dummy.npz",
+                "pe_pulse_shape": "ember_file://pmt_pulse_shape_dummy.json",
+                "pmt_circuit_load_resistor": "detector://pmt_circuit_load_resistor",
+                "pmt_pulse_time_rounding": "detector://pmt_pulse_time_rounding",
+                "samples_after_pulse_center": "detector://samples_after_pulse_center",
+                "samples_before_pulse_center": "detector://samples_before_pulse_center",
+                "special_thresholds": "detector://special_thresholds",
+                "trigger_window": "detector://trigger_window",
+                "user_defined_random_seed": null,
+                "zle_threshold": "detector://zle_threshold"
+            }
+        ],
+        "s1_photon_hits": [
+            "S1PhotonHits",
+            "0.0.2",
+            {
+                "deterministic_seed": true,
+                "gain_model_mc": "ember_pmt_to_pe://",
+                "p_double_pe_emission": "detector://p_double_pe_emission",
+                "s1_detection_efficiency": "detector://s1_detection_efficiency",
+                "s1_pattern_map": "ember_map://s1_pattern_map_dummy.pkl?method=linear",
+                "user_defined_random_seed": null
+            }
+        ],
+        "s2_photons_sum": [
+            "SecondaryScintillation",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "electron_extraction_yield": "detector://electron_extraction_efficiency",
+                "g2": "detector://g2",
+                "p_double_pe_emission": "detector://p_double_pe_emission",
+                "s2_correction_map": "ember_map://s2_correction_map_dummy.json?method=linear",
+                "user_defined_random_seed": null
+            }
+        ],
+        "volume_properties": [
+            "VolumeProperties",
+            "0.0.1",
+            {
+                "deterministic_seed": true,
+                "tpc_radius": "detector://tpc_radius",
+                "user_defined_random_seed": null,
+                "xenon_density_gas": "detector://xenon_density_gas",
+                "xenon_density_liquid": "detector://xenon_density_liquid",
+                "z_bottom_pmts": "detector://z_bottom_pmts",
+                "z_cathode": "detector://z_cathode",
+                "z_gate": "detector://z_gate",
+                "z_liquid_level": "detector://z_liquid_level",
+                "z_top_pmts": "detector://z_top_pmts"
+            }
+        ],
+        "volume_selection": [
+            "VolumeSelection",
+            "0.0.1",
+            {}
+        ]
+    },
+    "lineage_hash": "ecoajn2gsp",
+    "run_id": "000001",
+    "start": 0,
+    "strax_version": "2.2.3",
+    "writing_ended": 1795185548.459594,
+    "writing_started": 1795185508.922119
+}

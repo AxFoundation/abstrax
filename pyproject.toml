@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "abstrax"
+version = "0.0.1"
+description = "Abstract strax-based processing framework for a generic large-scale LXe TPC"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "BSD-3-Clause" }
+authors = [{ name = "abstrax contributors" }]
+keywords = ["strax", "straxen", "LXe", "TPC", "dark matter"]
+
+# NOTE: strax is not API-stable. abstrax needs a strax release that contains
+# strax.URLConfig; pin it once that release exists and bump only after a green
+# test run (including the tutorials) against the new version.
+dependencies = [
+    "immutabledict>=4.0",
+    "numba>=0.58",
+    "numpy>=1.24,<3",
+    "pandas>=2.0",
+    "pyyaml>=6.0",
+    "scipy>=1.10",
+    "strax>=2.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.0",
+    "flake8>=7.0",
+    "hypothesis>=6.0",
+    "jupyterlab>=4.0",
+    "matplotlib>=3.7",
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+]
+
+[project.urls]
+Source = "https://github.com/YOUR_ORG/abstrax"
+
+[tool.setuptools.packages.find]
+include = ["abstrax*"]
+
+[tool.setuptools.package-data]
+abstrax = ["config/*.yaml", "config/*.json", "resources/*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"

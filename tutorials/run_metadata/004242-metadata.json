@@ -1,0 +1,24 @@
+{
+    "comments": [
+        {
+            "comment": "Some other run"
+        }
+    ],
+    "end": {
+        "$date": {
+            "$numberLong": "-3000000"
+        }
+    },
+    "mode": "another_run_mode",
+    "name": "004242",
+    "start": {
+        "$date": {
+            "$numberLong": "-3600000"
+        }
+    },
+    "tags": [
+        {
+            "name": "some_other_tag"
+        }
+    ]
+}
