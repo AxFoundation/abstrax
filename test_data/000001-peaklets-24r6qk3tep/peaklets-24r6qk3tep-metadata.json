@@ -4,23 +4,23 @@
         {
             "chunk_i": 0,
             "end": 200080000000,
-            "filename": "lone_hits-ecoajn2gsp-000000",
-            "filesize": 27433,
-            "first_endtime": 40001720,
-            "first_time": 40001690,
-            "last_endtime": 199900299920,
-            "last_time": 199900299900,
-            "n": 1254,
-            "nbytes": 60192,
+            "filename": "peaklets-24r6qk3tep-000000",
+            "filesize": 45519323,
+            "first_endtime": 500,
+            "first_time": 40,
+            "last_endtime": 199980948940,
+            "last_time": 199980939940,
+            "n": 20912,
+            "nbytes": 105082800,
             "run_id": "000001",
             "start": 0,
             "subruns": null
         }
     ],
     "compressor": "zstd",
-    "data_kind": "lone_hits",
-    "data_type": "lone_hits",
-    "dtype": "[(('Start time since unix epoch [ns]', 'time'), '<i8'), (('Length of the interval in samples', 'length'), '<i4'), (('Width of one sample [ns]', 'dt'), '<i2'), (('Channel/PMT number', 'channel'), '<i2'), (('Integral [ADC x samples]', 'area'), '<f4'), (('Index of sample in record in which hit starts', 'left'), '<i2'), (('Index of first sample in record just beyond hit (exclusive bound)', 'right'), '<i2'), (('For lone hits, index of sample in record where integration starts', 'left_integration'), '<i2'), (('For lone hits, index of first sample beyond integration region', 'right_integration'), '<i2'), (('Internal (temporary) index of fragment in which hit was found', 'record_i'), '<i4'), (('ADC threshold applied in order to find hits', 'threshold'), '<f4'), (('Maximum amplitude above baseline [ADC counts]', 'height'), '<f4'), (('Time when hit reach maximum amplitude [ns]', 'max_time'), '<i8')]",
+    "data_kind": "peaklets",
+    "data_type": "peaklets",
+    "dtype": "[(('Start time since unix epoch [ns]', 'time'), '<i8'), (('Length of the interval in samples', 'length'), '<i4'), (('Width of one sample [ns]', 'dt'), '<i4'), (('Channel/PMT number', 'channel'), '<i2'), (('Classification of the peak(let)', 'type'), '|i1'), (('Integral across channels [PE]', 'area'), '<f4'), (('Fraction of area seen by the top array', 'area_fraction_top'), '<f4'), (('Integral per channel [PE]', 'area_per_channel'), '<f4', (494,)), (('Number of hits contributing at least one sample to the peak ', 'n_hits'), '<i4'), (('Waveform data in PE/sample (not PE/ns!), top array', 'data_top'), '<f4', (200,)), (('Waveform data in PE/sample (not PE/ns!), starting not downsampled samples', 'data_start'), '<f4', (200,)), (('Waveform data in PE/sample (not PE/ns!)', 'data'), '<f4', (200,)), (('Weighted average center time of the peak [ns]', 'center_time'), '<i8'), (('Weighted relative median time of the peak [ns]', 'median_time'), '<f4'), (('Peak widths in range of central area fraction [ns]', 'width'), '<f4', (11,)), (('Peak widths: time between nth and 5th area decile [ns]', 'area_decile_from_midpoint'), '<f4', (11,)), (('Does the channel reach ADC saturation?', 'saturated_channel'), '|i1', (494,)), (('Total number of saturated channels', 'n_saturated_channels'), '<i2'), (('Channel within tight range of mean', 'tight_coincidence'), '<i2'), (('Largest gap between hits inside peak [ns]', 'max_gap'), '<i4'), (('Maximum interior goodness of split', 'max_goodness_of_split'), '<f4'), (('Largest time difference between apexes of hits inside peak [ns]', 'max_diff'), '<i4'), (('Smallest time difference between apexes of hits inside peak [ns]', 'min_diff'), '<i4'), (('First channel/PMT number inside peak (sorted by apexes of hits)', 'first_channel'), '<i2'), (('Last channel/PMT number inside peak (sorted by apexes of hits)', 'last_channel'), '<i2')]",
     "end": 200080000000,
     "lineage": {
         "clustered_interactions": [
@@ -324,10 +324,10 @@
             {}
         ]
     },
-    "lineage_hash": "ecoajn2gsp",
+    "lineage_hash": "24r6qk3tep",
     "run_id": "000001",
     "start": 0,
     "strax_version": "2.2.3",
-    "writing_ended": 1795185548.4958744,
-    "writing_started": 1795185508.9028764
+    "writing_ended": 1795185548.459594,
+    "writing_started": 1795185508.922119
 }

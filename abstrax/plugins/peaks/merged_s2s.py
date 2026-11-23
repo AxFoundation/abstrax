@@ -90,13 +90,13 @@ class MergedS2s(strax.OverlapWindowPlugin):
     )
 
     # --- Gain model ----------------------------------------------------------
-    # No default: the context must supply this (e.g. "numpy://<path>").
+    # No default: the context must supply this (e.g. "pkg://<file in abstrax/resources>").
 
     gain_model = strax.URLConfig(
         infer_type=False,
         help=(
             "PMT gain model: 1-D array of PE/ADC conversion factors, "
-            "one entry per channel.  Loaded via the numpy:// protocol."
+            "one entry per channel, e.g. loaded via the pkg:// protocol."
         ),
     )
 

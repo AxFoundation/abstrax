@@ -11,7 +11,8 @@ No MongoDB, no RunDB, no network. All physics parameters come from
 ``abstrax/config/detector.yaml`` (via the ``detector://`` URLConfig protocol).
 
 A flat fake gain array is generated once into ``abstrax/resources/`` and
-cached there across runs.
+cached there across runs. It is referenced by file name (``pkg://``), not by
+absolute path, so the lineage hashes do not depend on where abstrax is installed.
 """
 
 from __future__ import annotations
@@ -85,7 +86,7 @@ def abstrax_context(
         int(strax.URLConfig.evaluate_dry("detector://n_tpc_pmts")),
         float(strax.URLConfig.evaluate_dry("detector://pmt_to_pe")),
     )
-    st.set_config({"gain_model": f"numpy://{gain_file}"})
+    st.set_config({"gain_model": f"pkg://{gain_file.name}"})
 
     return st
 
