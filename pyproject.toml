@@ -24,6 +24,7 @@ dependencies = [
     "scipy>=1.10",
     "strax>=2.3.0",
     "matplotlib",
+    "ipykernel",
     "ipywidgets", # Since the tutorials are notebooks, and strax requires it for the progress bar
 ]
 
